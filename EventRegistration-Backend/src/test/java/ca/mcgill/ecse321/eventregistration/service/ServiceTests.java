@@ -71,15 +71,6 @@ public class ServiceTests {
 		when(registrationDao.save(any(Registration.class))).thenAnswer(returnParameterAsAnswer);
 	}
 
-	@After
-	public void clearDatabase() {
-		// Fisrt, we clear registrations to avoid exceptions due to inconsistencies
-		registrationDao.deleteAll();
-		// Then we can clear the other tables
-		eventDao.deleteAll();
-		personDao.deleteAll();
-	}
-
 	@Test
 	public void testCreatePerson() {
 		assertEquals(0, service.getAllPersons().size());
